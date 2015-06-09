@@ -14,3 +14,7 @@ TODO: Write usage instructions here
 
 `bundle exec rake`
 
+## License
+
+AGPLv3+
+

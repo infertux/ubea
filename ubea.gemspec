@@ -1,16 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ubea/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "ubea"
-  spec.version       = Ubea::VERSION
+  spec.version       = "1.0.0"
   spec.authors       = ["Cédric Félizard"]
   spec.email         = ["cedric@felizard.fr"]
-  spec.summary       = 'TODO: Write a short summary. Required.'
-  spec.description   = 'TODO: Write a longer description. Optional.'
-  spec.homepage      = ""
+  spec.summary       = 'Unified Bitcoin Exchange API'
+  spec.description   = spec.summary
+  spec.homepage      = "https://github.com/infertux/ubea"
   spec.license       = "AGPLv3+"
 
   spec.files         = `git ls-files -z`.split("\x0")
