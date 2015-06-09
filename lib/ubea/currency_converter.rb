@@ -1,4 +1,5 @@
 require "retryable"
+require "ubea/log"
 
 module Ubea
   class CurrencyConverter
@@ -63,7 +64,7 @@ module Ubea
         rate = BigDecimal.new(string)
 
         if rate <= 1E-3
-          # NOTE: not enough precision, using the opposite pair
+          Log.warn "Cannot retrieve exchange rate for #{from}#{to}, not enough precision, using the opposite pair"
 
           url = URL % [to, from]
           string = get_json(url, to, from)
@@ -90,7 +91,7 @@ module Ubea
         rate = BigDecimal.new(csv[1].to_s)
 
         if rate <= 1E-3
-          # NOTE: not enough precision, using the opposite pair
+          Log.warn "Cannot retrieve exchange rate for #{from}#{to}, not enough precision, using the opposite pair"
 
           url = URL % [to, from]
           csv = get_csv(url)

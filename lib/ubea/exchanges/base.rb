@@ -6,6 +6,7 @@ require "retryable"
 require "faraday"
 require "net/protocol"
 require "ubea"
+require "ubea/log"
 require "ubea/money"
 require "ubea/offer"
 require "ubea/order_book"
@@ -86,6 +87,8 @@ module Ubea
         now = Time.now.utc
         @last_rtt = now - updated_at if updated_at
         @updated_at = now
+
+        Log.debug "Order book for #{self} has been refreshed"
       end
     end
   end

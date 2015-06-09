@@ -5,6 +5,7 @@ module Ubea
     def self.default
       config = OpenStruct.new
 
+      config.debug = false
       config.default_fiat_currency = "USD" # ideally the most used currency so we do as little conversions as possible
       config.exchange_settings = {}
 
