@@ -38,7 +38,7 @@ module Ubea
     end
 
     def volume=(volume)
-      raise ArgumentError if volume < 0
+      raise ArgumentError, "invalid volume: #{volume}" if volume < 0
       @volume = volume
     end
   end

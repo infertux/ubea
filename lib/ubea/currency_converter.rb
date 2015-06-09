@@ -14,6 +14,8 @@ module Ubea
 
       if @rates[pair].nil? || @rates[pair].updated_at < Time.now - 10 * 60
 
+        Log.debug "Refreshing #{pair} rate..."
+
         rate_1 = YahooExchange.get_rate(from, to)
 
         rate_2 = begin
