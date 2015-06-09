@@ -56,10 +56,11 @@ module Ubea
       total_fiat_amount = 0
       good_offers = []
 
-      offers = public_send(type) # asks or bids
+      offers = public_send(type).dup # asks or bids
+      offers.reverse! if type == :bids
 
       offers.each do |offer|
-        break unless total_fiat_amount >= fiat_amount
+        break if total_fiat_amount >= fiat_amount
 
         offer = offer.dup # NOTE: dup because we're gonna mess with its volume below
         offer.price = offer.price.exchange_to(fiat_currency)
