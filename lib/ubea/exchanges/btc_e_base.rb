@@ -46,7 +46,9 @@ module Ubea
           amount: args.fetch(:volume),
         }
 
-        post_private("Trade", params)
+        Log.debug params
+        trade = post_private("Trade", params)
+        Log.info trade
       end
 
       def open_orders

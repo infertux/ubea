@@ -5,6 +5,7 @@ require "addressable/uri"
 require "retryable"
 require "faraday"
 require "net/protocol"
+require "zlib"
 require "ubea"
 require "ubea/log"
 require "ubea/money"
@@ -50,6 +51,8 @@ module Ubea
           Faraday::TimeoutError,
           Faraday::SSLError,
           Net::ReadTimeout,
+          OpenURI::HTTPError,
+          Zlib::BufError,
         ].freeze
 
         Retryable.retryable(tries: 5, sleep: 1, on: exceptions) do

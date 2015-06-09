@@ -6,6 +6,7 @@ require "ubea/exchanges/base"
 module Ubea
   module Exchange
     class KrakenBase < Base
+      BadResponseError = Class.new(Exception)
       RateError = Class.new(Exception)
 
       def name
@@ -108,6 +109,7 @@ module Ubea
 
         json = JSON.parse(response.body)
         unless json["error"].empty?
+          raise BadResponseError if json["error"] == ["EAPI:Invalid nonce"]
           raise RateError if json["error"] == ["EAPI:Rate limit exceeded"]
 
           p json
@@ -119,6 +121,10 @@ module Ubea
         json["result"]
 
       rescue JSON::ParserError
+        retry
+
+      rescue BadResponseError
+        Log.warn "BadResponseError for #{self}, retrying..."
         retry
 
       rescue RateError

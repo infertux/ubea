@@ -94,6 +94,8 @@ module Ubea
         begin
           json = JSON.parse(response.body)
           unless json["success"] == 1
+            raise BadResponseError if json["error"] == "Invalid nonce"
+
             p json
             raise "OOPS"
           end
