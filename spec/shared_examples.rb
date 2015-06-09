@@ -1,5 +1,4 @@
 RSpec.shared_examples "an exchange" do
-
   specify("implements #id") { expect(subject.id).to be_a String }
   specify("implements #short_name") { expect(subject.short_name).to be_a String }
   specify("implements #name") { expect(subject.name).to be_a String }
@@ -12,5 +11,4 @@ RSpec.shared_examples "an exchange" do
 
     expect(subject.fiat_currency).to eq klass_currency
   end
-
 end

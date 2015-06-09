@@ -4,7 +4,7 @@ module Ubea
 
   module_function
 
-    def info message, options = {}
+    def info(message, options = {})
       options = {
         output: $stdout,
         timestamp: true
@@ -15,15 +15,14 @@ module Ubea
       @semaphore.synchronize { options.fetch(:output).puts message }
     end
 
-    def debug message, options = {}
+    def debug(message, options = {})
       info message, options if Ubea.config.debug
     end
 
-    def warn message, options = {}
-      options = {output: $stderr}.merge(options)
+    def warn(message, options = {})
+      options = { output: $stderr }.merge(options)
 
       info "[WARN] #{message}", options
     end
   end
 end
-

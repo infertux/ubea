@@ -19,6 +19,9 @@ Style/IndentationWidth:
 Lint/EndAlignment:
   Enabled: false
 
+Lint/NonLocalExitFromIterator:
+  Enabled: false
+
 Style/AccessModifierIndentation:
   Enabled: false
 

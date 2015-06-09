@@ -25,7 +25,8 @@ module Ubea
 
       def format_asks_bids(json)
         json.map do |tuple|
-          price, volume = tuple["price"], tuple["amount"]
+          price = tuple["price"]
+          volume = tuple["amount"]
           price_chf = Money.new(price, fiat_currency)
           price_normalized = price_chf.exchange_to(Ubea.config.default_fiat_currency)
 
