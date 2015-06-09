@@ -48,7 +48,7 @@ module Ubea
       end
 
       def self.get_json(url)
-        retryable(tries: 3, sleep: 1) do
+        Retryable.retryable(tries: 3, sleep: 1) do
           json = open(url).read
           JSON.parse(json)
         end
@@ -75,7 +75,7 @@ module Ubea
       end
 
       def self.get_json(url, from, to)
-        retryable(tries: 3, sleep: 1) do
+        Retryable.retryable(tries: 3, sleep: 1) do
           json = open(url).read
           JSON.parse(json)["#{from}_#{to}"]["val"].to_s
         end
@@ -102,7 +102,7 @@ module Ubea
       end
 
       def self.get_csv(url)
-        retryable(tries: 3, sleep: 1) do
+        Retryable.retryable(tries: 3, sleep: 1) do
           csv = open(url).read
           csv.split(",")
         end

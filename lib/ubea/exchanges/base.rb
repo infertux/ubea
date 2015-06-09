@@ -52,7 +52,7 @@ module Ubea
           Net::ReadTimeout,
         ].freeze
 
-        retryable(tries: 5, sleep: 1, on: exceptions) do
+        Retryable.retryable(tries: 5, sleep: 1, on: exceptions) do
           yield
         end
       end
@@ -68,7 +68,7 @@ module Ubea
       end
 
       def get_html(url)
-        retryable(tries: 5, sleep: 1) do
+        Retryable.retryable(tries: 5, sleep: 1) do
           open(url).read
         end
       end
