@@ -1,3 +1,6 @@
+require "base64"
+require "securerandom"
+require "addressable/uri"
 require "ubea/exchanges/base"
 
 module Ubea
