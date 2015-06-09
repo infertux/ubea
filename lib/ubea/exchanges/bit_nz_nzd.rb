@@ -1,3 +1,5 @@
+require "ubea/exchanges/base"
+
 module Ubea
   module Exchange
     class BitNzNzd < Base
